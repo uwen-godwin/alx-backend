@@ -3,7 +3,6 @@
 
 from base_caching import BaseCaching
 
-
 class LIFOCache(BaseCaching):
     """ LIFOCache defines a LIFO caching system """
 
@@ -16,9 +15,13 @@ class LIFOCache(BaseCaching):
         if key is None or item is None:
             return
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            # Find the last key in the dictionary
             last_key = next(reversed(self.cache_data))
+            # Print the discarded key
             print("DISCARD:", last_key)
+            # Remove the last item
             self.cache_data.pop(last_key)
+        # Add the new item to the cache
         self.cache_data[key] = item
 
     def get(self, key):
