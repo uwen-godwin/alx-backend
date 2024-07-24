@@ -1,6 +1,6 @@
+#!/usr/bin/env python3
 from typing import List, Tuple
 import csv
-import math
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:

@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
 from typing import List, Tuple, Dict
 import csv
 import math
+
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
@@ -11,6 +13,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
     start_index = (page - 1) * page_size
     end_index = page * page_size
     return start_index, end_index
+
 
 class Server:
     """Server class to paginate a database of popular baby names."""
@@ -31,10 +34,13 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Takes two integer arguments page with default value 1 and page_size with default value 10.
-        Uses index_range to find the correct indexes to paginate the dataset correctly and return
+        Takes two integer arguments page with default
+        value 1 and page_size with default value 10.
+        Uses index_range to find the correct indexes to
+        paginate the dataset correctly and return
         the appropriate page of the dataset (i.e., the correct list of rows).
-        If the input arguments are out of range for the dataset, an empty list should be returned.
+        If the input arguments are out of range for the
+        dataset, an empty list should be returned.
         """
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
@@ -49,7 +55,8 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, any]:
         """
-        Takes two integer arguments page with default value 1 and page_size with default value 10.
+        Takes two integer arguments page with default
+        value 1 and page_size with default value 10.
         Returns a dictionary with key-value pairs as described:
         - page_size: the length of the returned dataset page
         - page: the current page number
