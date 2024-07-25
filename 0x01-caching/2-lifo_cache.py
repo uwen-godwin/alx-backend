@@ -1,30 +1,48 @@
-#!/usr/bin/env python3
-""" LIFO caching """
+#!/usr/bin/python3
+""" Log parsing script """
 
-from base_caching import BaseCaching
+import sys
+import signal
+
+# Initialize global variables
+file_size = 0
+status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+line_count = 0
 
 
-class LIFOCache(BaseCaching):
-    """ LIFOCache defines a LIFO caching system """
+def print_stats():
+    """ Function to print the statistics """
+    print("File size: {}".format(file_size))
+    for code in sorted(status_codes):
+        if status_codes[code] > 0:
+            print("{}: {}".format(code, status_codes[code]))
 
-    def __init__(self):
-        """ Initialize """
-        super().__init__()
 
-    def put(self, key, item):
-        """ Add an item in the cache """
-        if key is None or item is None:
-            return
-        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            # Find the last key in the dictionary
-            last_key = next(reversed(self.cache_data))
-            # Print the discarded key
-            print("DISCARD:", last_key)
-            # Remove the last item
-            self.cache_data.pop(last_key)
-        # Add the new item to the cache
-        self.cache_data[key] = item
+def signal_handler(sig, frame):
+    """ Signal handler to print stats on keyboard interruption """
+    print_stats()
+    sys.exit(0)
 
-    def get(self, key):
-        """ Get an item by key """
-        return self.cache_data.get(key, None)
+
+# Register the signal handler
+signal.signal(signal.SIGINT, signal_handler)
+
+try:
+    for line in sys.stdin:
+        parts = line.split()
+        if len(parts) > 6:
+            try:
+                status_code = int(parts[-2])
+                size = int(parts[-1])
+                if status_code in status_codes:
+                    status_codes[status_code] += 1
+                file_size += size
+                line_count += 1
+            except ValueError:
+                continue
+
+        if line_count % 10 == 0:
+            print_stats()
+except KeyboardInterrupt:
+    print_stats()
+    raise
