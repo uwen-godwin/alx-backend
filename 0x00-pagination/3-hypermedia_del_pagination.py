@@ -41,12 +41,15 @@ class Server:
         that is resilient to deletions.
 
         Args:
-            index (int): The current start index of the return page.
-            page_size (int): The number of items per page.
+            index (int, optional): The current start index of the return page.
+            page_size (int, optional): The number of items per page.
 
         Returns:
             Dict[str, Any]: A dictionary with pagination details.
         """
+        if index is None:
+            index = 0
+
         assert isinstance(index, int) and index >= 0
         assert isinstance(page_size, int) and page_size > 0
 
@@ -65,15 +68,7 @@ class Server:
                 data.append(dataset[current_index])
             current_index += 1
 
-        next_index = index + page_size
-        if next_index >= total_items:
-            next_index = None
-        else:
-            # Adjust next_index to avoid pointing to a deleted item
-            while next_index not in dataset and next_index < total_items:
-                next_index += 1
-            if next_index >= total_items:
-                next_index = None
+        next_index = current_index if current_index < total_items else None
 
         return {
             'index': index,
