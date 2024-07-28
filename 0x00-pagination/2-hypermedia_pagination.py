@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Any
 import csv
 import math
 
@@ -53,7 +53,7 @@ class Server:
 
         return dataset[start_index:end_index]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, any]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """
         Takes two integer arguments page with default
         value 1 and page_size with default value 10.
