@@ -37,8 +37,8 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = 0,
-                        page_size: int = 10) -> Dict[str, Any]:
+    def get_hyper_index(self, index: int =
+                        None, page_size: int = 10) -> Dict[str, Any]:
         """Returns a dictionary with pagination details"""
         # Validate index
         if index is None or not isinstance(index, int) or index < 0:
@@ -61,15 +61,7 @@ class Server:
                 data.append(dataset[current_index])
             current_index += 1
 
-        next_index = index + page_size
-        if next_index >= total_items:
-            next_index = None
-        else:
-            # Adjust next_index to avoid pointing to a deleted item
-            while next_index not in dataset and next_index < total_items:
-                next_index += 1
-            if next_index >= total_items:
-                next_index = None
+        next_index = current_index if current_index < total_items else None
 
         return {
             'index': index,
