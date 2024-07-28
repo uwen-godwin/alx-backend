@@ -8,7 +8,8 @@ from typing import List, Dict, Any
 
 
 class Server:
-    """Server class to paginate a database of popular baby names."""
+    """Server class to paginate a database of popular baby names.
+    """
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
@@ -16,7 +17,8 @@ class Server:
         self.__indexed_dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset"""
+        """Cached dataset
+        """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
@@ -26,7 +28,8 @@ class Server:
         return self.__dataset
 
     def indexed_dataset(self) -> Dict[int, List]:
-        """Dataset indexed by sorting position, starting at 0"""
+        """Dataset indexed by sorting position, starting at 0
+        """
         if self.__indexed_dataset is None:
             dataset = self.dataset()
             self.__indexed_dataset = {
@@ -36,20 +39,16 @@ class Server:
 
     def get_hyper_index(self, index: int = None,
                         page_size: int = 10) -> Dict[str, Any]:
-        """
-        Returns a dictionary with pagination details
-        that is resilient to deletions.
+        """Returns a dictionary with pagination details
 
         Args:
-            index (int, optional): The current start index of the return page.
-            page_size (int, optional): The number of items per page.
+            index (int): The starting index of the page.
+            page_size (int): The number of items per page.
 
         Returns:
-            Dict[str, Any]: A dictionary with pagination details.
+            Dict[str, Any]: A dictionary containing pagination details.
         """
-        if index is None:
-            index = 0
-
+        # Validate index
         assert isinstance(index, int) and index >= 0
         assert isinstance(page_size, int) and page_size > 0
 
@@ -68,7 +67,9 @@ class Server:
                 data.append(dataset[current_index])
             current_index += 1
 
-        next_index = current_index if current_index < total_items else None
+        next_index = current_index
+        if next_index >= total_items:
+            next_index = None
 
         return {
             'index': index,
