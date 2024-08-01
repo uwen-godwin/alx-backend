@@ -1,15 +1,16 @@
 # Translations template for PROJECT.
 # Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <uwengodwin001@gmail.com>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: uwengodwin001@gmail.com\n"
-"POT-Creation-Date: 2024-08-01 20:58+0100\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-08-01 21:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Godwin Uwen <uwengodwin001@gmail.com>\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,12 +20,12 @@ msgstr ""
 #: templates/3-index.html:5 templates/4-index.html:5 templates/5-index.html:5
 #: templates/6-index.html:5 templates/7-index.html:5 templates/index.html:5
 msgid "home_title"
-msgstr "Welcome to Holberton"
+msgstr ""
 
 #: templates/3-index.html:8 templates/4-index.html:8 templates/5-index.html:8
 #: templates/6-index.html:8 templates/7-index.html:8 templates/index.html:8
 msgid "home_header"
-msgstr "Hello world!"
+msgstr ""
 
 #: templates/7-index.html:9 templates/index.html:16
 msgid "current_time"
@@ -206,14 +207,95 @@ msgstr ""
 msgid "Error: The value you entered was invalid."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/click/termui.py:229
-msgid "{input} (up={up}, down={down})"
+#: venv/lib/python3.8/site-packages/click/termui.py:176
+msgid "Error: {e.message}"
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/click/utils.py:193
-msgid "the following environment variables are set: {environment_variables}"
+#: venv/lib/python3.8/site-packages/click/termui.py:187
+msgid "Error: The two entered values do not match."
 msgstr ""
 
-#: venv/lib/python3.8/site-packages/click/utils.py:220
-msgid "importing {filename}"
+#: venv/lib/python3.8/site-packages/click/termui.py:243
+msgid "Error: invalid input"
 msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/termui.py:773
+msgid "Press any key to continue..."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:266
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:300
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:394
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:414
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:470
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:611
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:635
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:822
+msgid "file"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:824
+msgid "directory"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:826
+msgid "path"
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:877
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:886
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:894
+msgid "{name} '{filename}' is a directory."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:903
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:912
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:921
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: venv/lib/python3.8/site-packages/click/types.py:987
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+
