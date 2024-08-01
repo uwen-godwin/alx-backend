@@ -9,7 +9,9 @@ app = Flask(__name__)
 
 
 class Config:
-    """Config class"""
+    """
+    Configuration class for Flask app
+    """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -20,8 +22,17 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale():
-    """Get locale from request"""
+def get_locale() -> str:
+    """
+    Determine the locale to use for this request.
+    
+    Checks the URL parameter 'locale' for a supported locale.
+    If not present or not supported, fallback to the best match
+    from the request's Accept-Language header.
+
+    Returns:
+        str: The locale to use.
+    """
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
@@ -29,10 +40,17 @@ def get_locale():
 
 
 @app.route('/')
-def index():
-    """Force locale with URL parameter"""
+def index() -> str:
+    """
+    Render the index page.
+    
+    Renders the '4-index.html' template.
+
+    Returns:
+        str: The rendered template.
+    """
     return render_template('4-index.html')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
