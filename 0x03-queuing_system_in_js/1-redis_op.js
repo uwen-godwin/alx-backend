@@ -24,8 +24,6 @@ const displaySchoolValue = (schoolName) => {
   });
 };
 
-// First, set a value, then display it
-setNewSchool('Holberton', 'School');  // Set a value for 'Holberton'
-displaySchoolValue('Holberton');      // Now display the value for 'Holberton'
+displaySchoolValue('Holberton');
 setNewSchool('HolbertonSanFrancisco', '100');
 displaySchoolValue('HolbertonSanFrancisco');
